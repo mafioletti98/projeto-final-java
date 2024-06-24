@@ -31,4 +31,9 @@ public class Deck {
         this.listadecartas = listadecartas;
     }
 
+    @Override
+    public String toString() {
+        return "Deck [nomeDoDeck=" + nomeDoDeck + ", listadecartas=" + listadecartas + "]";
+    }
+
 }

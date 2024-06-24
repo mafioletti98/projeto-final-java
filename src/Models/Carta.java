@@ -4,14 +4,14 @@ public class Carta {
 
     protected String nomeDaCarta;
     protected String descricaoDacarta;
-    protected String raridade;
+    protected int raridade;
     protected int custoDemana;
     protected int poder;
 
     public Carta() {
     }
 
-    public Carta(String nomeDaCarta, String descricaoDacarta, String raridade, int custoDemana, int poder) {
+    public Carta(String nomeDaCarta, String descricaoDacarta, int raridade, int custoDemana, int poder) {
         this.nomeDaCarta = nomeDaCarta;
         this.descricaoDacarta = descricaoDacarta;
         this.raridade = raridade;
@@ -35,11 +35,11 @@ public class Carta {
         this.descricaoDacarta = descricaoDacarta;
     }
 
-    public String getRaridade() {
+    public int getRaridade() {
         return raridade;
     }
 
-    public void setRaridade(String raridade) {
+    public void setRaridade(int raridade) {
         this.raridade = raridade;
     }
 
@@ -57,6 +57,12 @@ public class Carta {
 
     public void setPoder(int poder) {
         this.poder = poder;
+    }
+
+    @Override
+    public String toString() {
+        return "Carta [nomeDaCarta=" + nomeDaCarta + ", descricaoDacarta=" + descricaoDacarta + ", raridade=" + raridade
+                + ", custoDemana=" + custoDemana + ", poder=" + poder + "]";
     }
 
 }
