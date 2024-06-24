@@ -1,77 +1,33 @@
 package Sistema;
 
-import Console.Console;
+import Models.Deck;
 
 public class Menu {
+    Deck deck = new Deck();
 
-    public static void menuLogin() {
-        int op;
-        do {
-            System.out.println("selecione uma das opçoes a seguir: ");
-            System.out.println("1 - Login");
-            System.out.println("2 - Novo cadastro");
-            System.out.println("0 - Sair");
-            op = Console.lerInt();
-            switch (op) {
-                case 1:
-                    Sistema.verificarLogin();
-                    break;
-                case 2:
-                    Cadastro.cadastrarJogador();
-                    break;
-                case 0:
-                    Sistema.sair();
-                    break;
+    Sistema sistema = new Sistema();
+    Cadastro cadastro = new Cadastro();
 
-                default:
-                    break;
-            }
-        } while (op == 0);
-
+    public void menuLogin() {
+        System.out.println("selecione uma das opçoes a seguir: ");
+        System.out.println("1 - Login");
+        System.out.println("2 - Novo cadastro");
+        System.out.println("0 - Sair");
     }
 
-    public static void menuDeck() {
-        int op;
-        do {
-            System.out.println("1 - cadastrar novo deck");
-            System.out.println("2 - ver decks cadastrados");
-            System.out.println("3 - ver decks incompletos");
-            System.out.println("4 - editar decks incompletos");
-            System.out.println("5 - Menu batalhas simuladas");
-            System.out.println("0 - sair");
-            op = Console.lerInt();
-        } while (op == 0);
-
+    public void menuDeck() {
+        System.out.println("1 - cadastrar novo deck");
+        System.out.println("2 - ver decks cadastrados");
+        System.out.println("3 - ver decks incompletos");
+        System.out.println("4 - editar decks incompletos");
+        System.out.println("5 - Menu batalhas simuladas");
+        System.out.println("0 - Voltar para o menu anterior");
     }
 
-    public static void menuCadastrarDeck() {
-        int op;
-        do {
-            System.out.println(" Novo deck");
-            System.out.println("1 - cadastrar nome deck");
-            System.out.println("2 - ver opções de cartas");
-            System.out.println("3 - adicionar carta ao deck");
-            System.out.println("4 - visualizar cartas do deck");
-            System.out.println("5 - remover carta do deck");
-            System.out.println("6 - voltar para o menu anterior");
-            System.out.println("0 - sair");
-            op = Console.lerInt();
-
-        } while (op == 0);
-
-    }
-
-    public static void menuEditarDeckIncompleto() {
-        int op;
-        do {
-            System.out.println("1 - adicionar carta ao deck");
-            System.out.println("2 - remover carta do deck");
-            System.out.println("3 - voltar para o menu anterior");
-            System.out.println("0 - sair");
-            op = Console.lerInt();
-
-        } while (op == 0);
-
+    public void menuEditarDeckIncompleto() {
+        System.out.println("1 - adicionar carta ao deck");
+        System.out.println("2 - remover carta do deck");
+        System.out.println("0 - voltar para o menu anterior");
     }
 
 }

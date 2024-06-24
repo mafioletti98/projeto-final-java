@@ -5,9 +5,9 @@ import java.util.List;
 
 public class CartasDoJogo {
 
-    public static List<Carta> listaDecartas = new ArrayList<Carta>();
+    public List<Carta> listaDecartas = new ArrayList<Carta>();
 
-    public static void InicializarListaDeCartas() {
+    public void InicializarListaDeCartas() {
         listaDecartas.add(new CartaDeAtaque(
                 "Ragnarok",
                 "Carta rara do tipo ataque que atinge o usuário com uma tempestade de raio causando 30 de dano",

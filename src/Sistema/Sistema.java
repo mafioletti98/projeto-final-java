@@ -12,90 +12,98 @@ import Models.Deck;
 public class Sistema {
     // lista statica, pra que assim que inicializar o programa ja ter
     // uma lista ( mesmo que vazia) pra checar o login.
-    static List<Jogador> jogadores = new ArrayList<Jogador>();
-    static List<Deck> deks = new ArrayList<Deck>();
-    static CartasDoJogo cartaDoJogo = new CartasDoJogo();
+    List<Jogador> jogadores = new ArrayList<Jogador>();
+    List<Deck> decks = new ArrayList<Deck>();
+    CartasDoJogo cartaDoJogo = new CartasDoJogo();
 
-    static int posicaoindiceJogadorlogado;
+    int posicaoindiceJogadorlogado = -1;
+
+    Menu menu = new Menu();
+    Cadastro cadastro = new Cadastro();
 
     // menu inicial
-    public static void menuFluxo() {
-
+    public void menuFluxo() {
         int op;
-        CartasDoJogo.InicializarListaDeCartas();
+        cartaDoJogo.InicializarListaDeCartas();
+        System.out.println("Bem vindos ao  slay the lascado ");
 
         do {
-            System.out.println("Bem vindos ao  slay the lascado ");
-            Menu.menuLogin();
+
+            menu.menuLogin();
             op = Console.lerInt();
             switch (op) {
                 case 1:
                     verificarLogin();
                     break;
                 case 2:
-                    Cadastro.cadastrarJogador();
+                    jogadores.add(cadastro.cadastrarJogador());
                     break;
                 case 0:
                     sair();
                     break;
-
                 default:
                     break;
             }
 
         } while (op == 0);
+    }
+
+    public void menuDeck() {
+        int op;
+        do {
+            menu.menuDeck();
+            op = Console.lerInt();
+            switch (op) {
+                case 1:
+                    decks.add(cadastro.cadastrarNovoDeck());
+                    break;
+                case 2:
+                    verDecksCadastrados();
+                    break;
+                case 3:
+                    verDecksIncompletos();
+                    break;
+                case 4:
+                    editarDeckIncompleto();
+                    break;
+                case 5:
+                    verDecksCadastrados();
+                    break;
+                case 0:
+                    break;
+
+                default:
+                    System.out.println("digite uma opçao valida");
+                    break;
+            }
+        } while (op == 0);
 
     }
 
-    public static void sair() {
+    public void sair() {
         System.out.println("Ate a proxima! ");
     }
 
-    public static void cadastrarJogador() {
-        Jogador jogadortemporario = new Jogador();
-        System.out.println("Porfavor digite o nome de usuario: ");
-        jogadortemporario.setNome(Console.lerString());
-        jogadores.add(jogadortemporario);
-        System.out.println("jogador cadastrado com sucesso!");
-        menuFluxo();
-
-    }
-
-    public static void cadastrarDeck() {
-        Deck deckTemporario = new Deck();
-        System.out.println("Porfavor digite o nome do seu Deck: ");
-        deckTemporario.setNomeDoDeck(Console.lerString());
-        deckTemporario.setListadecartas(null);
-        deks.add(deckTemporario);
-        System.out.println("Deck cadastrado com sucesso!");
-        menuFluxo();
-
-    }
-
-    public static void verificarLogin() {
+    public void verificarLogin() {
         System.out.println("Porfavor digite o nome de usuario cadastrado: ");
         String jogadorAserBuscado = Console.lerString();
 
         for (int i = 0; i < jogadores.size(); i++) {
 
             if (jogadores.get(i).getNome().equals(jogadorAserBuscado)) {
-                System.out.println("logado com sucesso!");
                 posicaoindiceJogadorlogado = i;
-                Menu.menuDeck();
             }
         }
-        if (posicaoindiceJogadorlogado != 0) {
-            menuFluxo();
-
+        if (posicaoindiceJogadorlogado != -1) {
+            System.out.println("logado com sucesso!");
         } else {
             System.out.println("jogador nao cadastrado!");
             System.out.println("Porfavor cadastre um usuario!");
-            menuFluxo();
         }
 
     }
 
-    public static void EditarDeckIncompleto() {
+    public void editarDeckIncompleto() {
 
         List<Deck> decksCadastrados = jogadores.get(posicaoindiceJogadorlogado).getListaDeDeckesDoJogador();
 
@@ -104,14 +112,31 @@ public class Sistema {
 
         Deck deckParaEditar = decksCadastrados.get(numeroDoDeckIncompleto - 1);
 
-        Menu.menuEditarDeckIncompleto();
+        int op;
+        do {
+            menu.menuEditarDeckIncompleto();
+            op = Console.lerInt();
+            switch (op) {
+                case 1:
+                    deckParaEditar = adicionarCartaAoDeck(deckParaEditar);
+                    break;
+                case 2:
+                    deckParaEditar = removerCartaDoDeck(deckParaEditar);
+                    break;
+                case 0:
+                    break;
+                default:
+                    System.out.println("digite uma opçao valida");
+                    break;
+            }
+        } while (op == 0);
 
         jogadores.get(posicaoindiceJogadorlogado).getListaDeDeckesDoJogador().set(numeroDoDeckIncompleto - 1,
                 deckParaEditar);
 
     }
 
-    public static void verDecksCadastrados() {
+    public void verDecksCadastrados() {
         Jogador jogadorLogado = jogadores.get(posicaoindiceJogadorlogado);
         List<Deck> deckDoJogador = jogadorLogado.getListaDeDeckesDoJogador();
         System.out.println("Decks Cadastrados");
@@ -119,10 +144,9 @@ public class Sistema {
             System.out.print("Deck numero: " + (i + 1));
             System.out.println(" " + deckDoJogador.get(i).getNomeDoDeck());
         }
-        Menu.menuDeck();
     }
 
-    public static void verDecksIncompletos() {
+    public void verDecksIncompletos() {
         Jogador jogadorLogado = jogadores.get(posicaoindiceJogadorlogado);
         List<Deck> deckDoJogador = jogadorLogado.getListaDeDeckesDoJogador();
         System.out.println("Decks Incompletos");
@@ -132,20 +156,19 @@ public class Sistema {
                 System.out.println(" " + deckDoJogador.get(i).getNomeDoDeck());
             }
         }
-        Menu.menuDeck();
     }
 
-    public static void verOpcoesDeCartas() {
+    public void verOpcoesDeCartas() {
         System.out.println("Cartas que podem ser selecionadas: ");
-        for (int i = 0; i < CartasDoJogo.listaDecartas.size(); i++) {
-            System.out.println((i + 1) + ". " + CartasDoJogo.listaDecartas.get(i).toString());
+        for (int i = 0; i < cartaDoJogo.listaDecartas.size(); i++) {
+            System.out.println((i + 1) + ". " + cartaDoJogo.listaDecartas.get(i).toString());
         }
     }
 
     // esse metodo adiciona uma nova carta , seja num deck novo ou em um deck criado
     // e incompleto.
     // pego o deck coloco uma carta dentro dele setto ele e depois devolvo pro menu.
-    public static Deck adicionarCartaAoDeck(Deck deck) {
+    public Deck adicionarCartaAoDeck(Deck deck) {
 
         List<Carta> listaDeCartasDoDeck = deck.getListadecartas();
 
@@ -153,7 +176,7 @@ public class Sistema {
             System.out.println("Digite o numero da carta que você quer adicionar no deck: ");
             int numeroDaCarta = Console.lerInt();
 
-            List<Carta> listaDeCartasDoJogo = cartaDoJogo.listaDecartas;
+            List<Carta> listaDeCartasDoJogo = cartaDoJogo.getCarta();
             listaDeCartasDoDeck.add(listaDeCartasDoJogo.get(numeroDaCarta - 1));
             deck.setListadecartas(listaDeCartasDoJogo);
         } else {
@@ -162,14 +185,14 @@ public class Sistema {
         return deck;
     }
 
-    public static void visualizarCartasDoDeck(Deck deck) {
+    public void visualizarCartasDoDeck(Deck deck) {
         List<Carta> listaDeCartasDoDeck = deck.getListadecartas();
         for (int i = 0; i < listaDeCartasDoDeck.size(); i++) {
             System.out.println((i + 1) + ". " + listaDeCartasDoDeck.get(i).toString());
         }
     }
 
-    public static Deck removerCartaDoDeck(Deck deck) {
+    public Deck removerCartaDoDeck(Deck deck) {
 
         List<Carta> listaDeCartasDoDeck = deck.getListadecartas();
 
