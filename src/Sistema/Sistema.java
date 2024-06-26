@@ -19,7 +19,7 @@ public class Sistema {
     static int posicaoindiceJogadorlogado = -1;
 
     // menu inicial
-    public static void menuFluxo() {
+    public static void menuFluxo() throws Exception {
         int op;
         System.out.println("teste");
         cartaDoJogo.InicializarListaDeCartas();
@@ -46,7 +46,7 @@ public class Sistema {
         } while (op != 0);
     }
 
-    public static void menuDeck() {
+    public static void menuDeck() throws Exception {
         int op;
         do {
             Menu.menuDeck();
@@ -83,7 +83,7 @@ public class Sistema {
         System.out.println("Ate a proxima! ");
     }
 
-    public static void verificarLogin() {
+    public static void verificarLogin() throws Exception {
         System.out.println("Porfavor digite o nome de usuario cadastrado: ");
         String jogadorAserBuscado = Console.lerString();
 
@@ -174,28 +174,37 @@ public class Sistema {
     // e incompleto.
     // pego o deck coloco uma carta dentro dele setto ele e depois devolvo pro menu.
     public static Deck adicionarCartaAoDeck(Deck deck) {
-
         List<Carta> listaDeCartasDoDeck = deck.getListadecartas();
-
+    
         if (listaDeCartasDoDeck == null) {
-            listaDeCartasDoDeck = new ArrayList<Carta>();
+            listaDeCartasDoDeck = new ArrayList<>(); 
         }
-
+    
         if (listaDeCartasDoDeck.size() < 15) {
-            verOpcoesDeCartas();
-            System.out.println("Digite o numero da carta que você quer adicionar no deck: ");
-            int numeroDaCarta = Console.lerInt();
-
-            List<Carta> listaDeCartasDoJogo = cartaDoJogo.getCarta();
-
-            listaDeCartasDoDeck.add(listaDeCartasDoJogo.get(numeroDaCarta - 1));
-
-            deck.setListadecartas(listaDeCartasDoDeck);
+            verOpcoesDeCartas(); 
+            System.out.println("Digite o número da carta que você quer adicionar no deck: ");
+    
+            try {
+                int numeroDaCarta = Console.lerInt(); 
+                List<Carta> listaDeCartasDoJogo = cartaDoJogo.getCarta(); 
+        
+                listaDeCartasDoDeck.add(listaDeCartasDoJogo.get(numeroDaCarta - 1));
+                deck.setListadecartas(listaDeCartasDoDeck);
+                 
+                System.out.println("Carta adicionada com sucesso!");
+    
+            } catch (NumberFormatException e) { 
+                System.out.println("\nErro: Digite um número inteiro válido para a carta!");
+            } catch (IndexOutOfBoundsException e) { 
+                System.out.println("\nErro: Número da carta inválido! O deck não possui essa carta.");
+            }
         } else {
-            System.out.println("O deck esta completo!");
+            System.out.println("O deck está completo!");
         }
+    
         return deck;
     }
+    
 
     public static void visualizarCartasDoDeck(Deck deck) {
         List<Carta> listaDeCartasDoDeck = deck.getListadecartas();
@@ -205,15 +214,25 @@ public class Sistema {
     }
 
     public static Deck removerCartaDoDeck(Deck deck) {
-
         List<Carta> listaDeCartasDoDeck = deck.getListadecartas();
-
-        System.out.println("Digite o numero da carta que você quer remover no deck: ");
-        int numeroDaCarta = Console.lerInt();
-        listaDeCartasDoDeck.remove(numeroDaCarta - 1);
-        deck.setListadecartas(listaDeCartasDoDeck);
-
-        return deck;
+    
+        while (true) { // Loop para repetição da entrada até um número inteiro ser digitado
+            try {
+                System.out.println("Digite o número da carta que você quer remover no deck: ");
+                int numeroDaCarta = Console.lerInt();
+    
+                listaDeCartasDoDeck.remove(numeroDaCarta - 1);
+                deck.setListadecartas(listaDeCartasDoDeck);
+                System.out.println("Carta removida com sucesso!");
+                return deck; // Retorne o deck após a remoção
+    
+            } catch (NumberFormatException e) { // Captura a exceção NumberFormatException
+                System.out.println("\nErro: Digite um número inteiro válido para a carta!");
+            } catch (IndexOutOfBoundsException e) { // Captura a exceção IndexOutOfBoundsException
+                System.out.println("\nErro: Número da carta inválido! O deck não possui essa carta.");
+            }
+        }
     }
+    
 
 }
