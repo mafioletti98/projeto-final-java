@@ -187,9 +187,10 @@ public class Sistema {
             try {
                 int numeroDaCarta = Console.lerInt(); 
                 List<Carta> listaDeCartasDoJogo = cartaDoJogo.getCarta(); 
-    
+        
                 listaDeCartasDoDeck.add(listaDeCartasDoJogo.get(numeroDaCarta - 1));
-                deck.setListadecartas(listaDeCartasDoDeck); 
+                deck.setListadecartas(listaDeCartasDoDeck);
+                 
                 System.out.println("Carta adicionada com sucesso!");
     
             } catch (NumberFormatException e) { 
