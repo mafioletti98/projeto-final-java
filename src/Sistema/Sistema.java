@@ -1,12 +1,7 @@
 package Sistema;
 
-import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import Console.Console;
 import Models.Jogador;
@@ -76,7 +71,8 @@ public class Sistema {
                     editarDeck();
                     break;
                 case 5:
-                    verDecksCadastrados();
+                    // Menu de Batalha
+                    // verDecksCadastrados();
                     break;
                 case 0:
                     break;
@@ -228,59 +224,7 @@ public class Sistema {
     }
 
     public static void salvarArquivo() {
-
-        JSONArray arrayItem = new JSONArray();
-        for (int i = 0; i < jogadores.size(); i++) {
-            JSONArray arrayDecks = new JSONArray();
-            JSONObject objItem = new JSONObject();
-
-            try {
-                objItem.put("nome", jogadores.get(i).getNome());
-
-                for (int j = 0; j < jogadores.get(i).getListaDeDeckesDoJogador().size(); j++) {
-
-                    JSONObject objDecks = new JSONObject();
-
-                    objDecks.put("nomeDoDeck", jogadores.get(i).getListaDeDeckesDoJogador().get(j).getNomeDoDeck());
-
-                    JSONArray arrayCartas = new JSONArray();
-
-                    for (int h = 0; h < jogadores.get(i).getListaDeDeckesDoJogador().get(j).getListadecartas()
-                            .size(); h++) {
-                        JSONObject objCartas = new JSONObject();
-                        objCartas.put("nomeDaCarta",
-                                jogadores.get(i).getListaDeDeckesDoJogador().get(j).getListadecartas()
-                                        .get(h).getNomeDaCarta());
-                        objCartas.put("descricaoDacarta", jogadores.get(i).getListaDeDeckesDoJogador().get(j)
-                                .getListadecartas().get(h).getDescricaoDacarta());
-                        objCartas.put("raridade", jogadores.get(i).getListaDeDeckesDoJogador().get(j).getListadecartas()
-                                .get(h).getRaridade());
-                        objCartas.put("custoDemana", jogadores.get(i).getListaDeDeckesDoJogador().get(j)
-                                .getListadecartas().get(h).getCustoDemana());
-                        objCartas.put("poder", jogadores.get(i).getListaDeDeckesDoJogador().get(j).getListadecartas()
-                                .get(h).getPoder());
-                        arrayCartas.put(objCartas);
-                        objDecks.put("listadecartas", arrayCartas);
-                    }
-
-                    arrayDecks.put(objDecks);
-                    objItem.put("listaDeDeckesDoJogador", arrayDecks);
-
-                }
-
-                arrayItem.put(objItem);
-            } catch (JSONException e) {
-
-                e.printStackTrace();
-            }
-        }
-
-        try (FileWriter file = new FileWriter("C:\\saveJogo\\save.json")) {
-            file.write(arrayItem.toString());
-        } catch (Exception e) {
-            System.out.println(e);
-
-        }
+        SaveJogoLerJson.saveDoArquivoJson(jogadores);
     }
 
 }
