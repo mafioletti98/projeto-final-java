@@ -40,8 +40,9 @@ public class JogadorDaBatalha {
     }
 
     public void mostrarCartas() {
-        System.out.println("Cartas do Jogador:");
+
         for (CartaDaBatalha carta : cartas) {
+            // System.out.println("Carta do Jogador:");
             System.out.println("Ataque: " + carta.getAtaque() + ", Defesa: " + carta.getDefesa());
         }
     }

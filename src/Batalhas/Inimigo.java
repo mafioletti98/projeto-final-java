@@ -46,8 +46,9 @@ public class Inimigo {
     }
 
     public void mostrarCartas() {
-        System.out.println("Cartas do Inimigo:");
+        // System.out.println("\nCarta do Inimigo:\n");
         for (CartaDaBatalha carta : cartas) {
+            // System.out.println("Carta do Inimigo:");
             System.out.println("Ataque: " + carta.getAtaque() + ", Defesa: " + carta.getDefesa());
         }
     }

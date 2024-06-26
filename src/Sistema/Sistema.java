@@ -272,7 +272,7 @@ public class Sistema {
             }
 
             Batalhas.SistemaDeBatalha.executar(
-                    new JogadorDaBatalha(200, jogadores.get(posicaoindiceJogadorlogado).getNome()),
+                    new JogadorDaBatalha(50, jogadores.get(posicaoindiceJogadorlogado).getNome()),
                     null, listaCartas);
         }
 

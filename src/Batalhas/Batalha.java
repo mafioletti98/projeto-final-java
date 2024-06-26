@@ -24,9 +24,9 @@ public class Batalha {
         CartaDaBatalha cartaDoJogador = cartasDoJogador.get(random.nextInt(cartasDoJogador.size()));
 
         System.out.println(
-                "Carta do Jogador - Ataque: " + cartaDoJogador.getAtaque() + ", Defesa: " + cartaDoJogador.getDefesa());
+                "Jogador - Ataque: " + cartaDoJogador.getAtaque() + ", Defesa: " + cartaDoJogador.getDefesa());
         System.out.println(
-                "Carta do Inimigo - Ataque: " + cartaDoInimigo.getAtaque() + ", Defesa: " + cartaDoInimigo.getDefesa());
+                "Inimigo - Ataque: " + cartaDoInimigo.getAtaque() + ", Defesa: " + cartaDoInimigo.getDefesa());
 
         int danoAoInimigo = Math.max(0, cartaDoJogador.getAtaque() - cartaDoInimigo.getDefesa());
         inimigo.receberDano(danoAoInimigo);

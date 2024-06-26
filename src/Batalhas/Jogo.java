@@ -33,9 +33,9 @@ public class Jogo {
 
         System.out.println("--- JOGO INICIADO ---");
         System.out.println("Jogador: " + jogador.getNome() + " vs Inimigo: " + inimigo.getNome());
-        System.out.println("Cartas do Jogador:");
+        System.out.println("\nCartas do deck de " + jogador.getNome() + "\n");
         jogador.mostrarCartas();
-        System.out.println("Cartas do Inimigo:");
+        System.out.println("\nCartas do deck de  " + inimigo.getNome() + "\n");
         inimigo.mostrarCartas();
 
         while (jogador.getVida() > 0 && inimigo.getVida() > 0) {

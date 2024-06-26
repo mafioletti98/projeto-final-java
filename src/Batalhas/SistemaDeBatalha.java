@@ -14,12 +14,12 @@ public class SistemaDeBatalha {
         System.out.println("2) Exibir nome do Jogador");
         System.out.println("3) Nome do Inimigo");
         System.out.println("0) Sair");
-        System.out.print("Escolha uma opção: ");
+        System.out.print("Escolha uma opção: \n ");
     }
 
     private static void iniciarJogo() {
         if (jogador == null || inimigo == null) {
-            System.out.println("Você precisa escolher um nome para o jogador e para o inimigo primeiro!");
+            System.out.println("Você precisa escolher um nome para o jogador e para o inimigo primeiro!\n");
             return;
         }
 
@@ -31,14 +31,14 @@ public class SistemaDeBatalha {
     }
 
     private static void mostrarNomeJogador() {
-        System.out.println("Nome do jogador definido como: " + jogador.getNome());
+        System.out.println("Nome do jogador definido como: \n" + jogador.getNome());
     }
 
     private static void escolherNomeInimigo() {
         System.out.print("Digite o nome do inimigo: ");
         String nome = ConsoleDeBatalha.lerString();
-        inimigo = new Inimigo(200, nome);
-        System.out.println("Nome do inimigo definido como: " + nome);
+        inimigo = new Inimigo(50, nome);
+        System.out.println("Nome do inimigo definido como:\n " + nome);
     }
 
     private static void verificarOpcao(int op) {
@@ -53,10 +53,10 @@ public class SistemaDeBatalha {
                 escolherNomeInimigo();
                 break;
             case 0:
-                System.out.println("Encerrando o programa de Batalhas...");
+                System.out.println("\nEncerrando o programa de Batalhas...");
                 break;
             default:
-                System.out.println("Opção inválida. Digite novamente.");
+                System.out.println("\nOpção inválida. Digite novamente.");
                 break;
         }
     }
