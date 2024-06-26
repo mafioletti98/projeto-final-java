@@ -9,16 +9,11 @@ public class DeckDeBatalha {
 
     public DeckDeBatalha() {
         this.listaCartas = new ArrayList<>();
-        // inicializarCartas();
+
     }
 
     public void setListaCartas(List<CartaDaBatalha> listaCartas) {
         this.listaCartas = listaCartas;
-    }
-
-    private void inicializarCartas() {
-        CartasDeBatalha cartas = new CartasDeBatalha();
-        listaCartas.addAll(cartas.getTodasAsCartas());
     }
 
     public void limparDeck() {

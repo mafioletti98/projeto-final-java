@@ -2,7 +2,7 @@ package Batalhas;
 
 import java.util.Scanner;
 
-public class Console {
+public class ConsoleDeBatalha {
 
     private static Scanner leitor = new Scanner(System.in);
 

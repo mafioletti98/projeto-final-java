@@ -2,7 +2,7 @@ package Batalhas;
 
 import java.util.List;
 
-public class Sistema {
+public class SistemaDeBatalha {
 
     private static JogadorDaBatalha jogador; // Variável para armazenar o jogador criado
     private static Inimigo inimigo; // Variável para armazenar o inimigo criado
@@ -36,7 +36,7 @@ public class Sistema {
 
     private static void escolherNomeInimigo() {
         System.out.print("Digite o nome do inimigo: ");
-        String nome = Console.lerString();
+        String nome = ConsoleDeBatalha.lerString();
         inimigo = new Inimigo(200, nome);
         System.out.println("Nome do inimigo definido como: " + nome);
     }
@@ -69,7 +69,7 @@ public class Sistema {
         deckBatalha = deckDeBatalhaVindoDeOutroCodigo;
         do {
             exibirMenu();
-            opcao = Console.lerInt();
+            opcao = ConsoleDeBatalha.lerInt();
             verificarOpcao(opcao);
         } while (opcao != 0);
     }

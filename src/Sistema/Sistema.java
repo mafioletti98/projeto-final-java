@@ -6,31 +6,38 @@ import java.util.List;
 import Console.Console;
 import Models.Jogador;
 import Batalhas.CartaDaBatalha;
-import Batalhas.DeckDeBatalha;
+
 import Batalhas.JogadorDaBatalha;
 import Models.Carta;
 import Models.CartasDoJogo;
 import Models.Deck;
 
 public class Sistema {
-    // lista statica, pra que assim que inicializar o programa ja ter
-    // uma lista ( mesmo que vazia) pra checar o login.
-    static List<Jogador> jogadores = new ArrayList<>();
+
+    // lista statica, pra que assim que inicializar o programa ja ter uma lista (
+    // mesmo que vazia) pra checar o login.
+
     static List<Deck> decks = new ArrayList<>();
     static CartasDoJogo cartaDoJogo = new CartasDoJogo();
+    static List<Jogador> jogadores = new ArrayList<>();
+
     // o -1 é pra caso o jogador que começa com indice 0, mas na posicao 1 , posiçao
     // 1 menos 1 = zero. que é onde ta ojogador na lista.
+
     static int posicaoindiceJogadorlogado = -1;
 
     // menu inicial com todo o fluxo de inicializaçao, e escolha de opçao do menu de
     // login.
+
     public static void menuFluxo(List<Jogador> listaDeJogadores) {
         int op;
         cartaDoJogo.InicializarListaDeCartas();
 
         if (listaDeJogadores != null) {
+
             // Carregando os jogadores salvos
-            jogadores = listaDeJogadores;
+            // jogadores = listaDeJogadores;
+            jogadores.addAll(listaDeJogadores);
         }
 
         System.out.println("Bem vindos ao slay the lascado ");
@@ -44,7 +51,9 @@ public class Sistema {
                     verificarLogin();
                     break;
                 case 2:
-                    jogadores.add(Cadastro.cadastrarJogador());
+                    Jogador novoJogador = Cadastro.cadastrarJogador();
+                    jogadores.add(novoJogador);
+                    // jogadores.add(Cadastro.cadastrarJogador());
                     break;
                 case 0:
                     sair();
@@ -262,7 +271,7 @@ public class Sistema {
                 }
             }
 
-            Batalhas.Sistema.executar(
+            Batalhas.SistemaDeBatalha.executar(
                     new JogadorDaBatalha(200, jogadores.get(posicaoindiceJogadorlogado).getNome()),
                     null, listaCartas);
         }
