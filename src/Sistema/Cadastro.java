@@ -5,9 +5,8 @@ import Models.Jogador;
 import Models.Deck;
 
 public class Cadastro {
-    Sistema sistema = new Sistema();
 
-    public Jogador cadastrarJogador() {
+    public static Jogador cadastrarJogador() {
 
         Jogador jogadortemporario = new Jogador();
         System.out.println("Porfavor digite o nome de usuario: ");
@@ -17,7 +16,7 @@ public class Cadastro {
 
     }
 
-    public Deck cadastrarNovoDeck() {
+    public static Deck cadastrarNovoDeck() {
         Deck deckTemporario = new Deck();
         System.out.println("Porfavor digite o nome do seu Deck: ");
         deckTemporario.setNomeDoDeck(Console.lerString());

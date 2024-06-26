@@ -1,10 +1,11 @@
 package Models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Jogador {
     String nome;
-    List<Deck> listaDeDeckesDoJogador;
+    List<Deck> listaDeDeckesDoJogador = new ArrayList<Deck>();
 
     public Jogador() {
     }
@@ -28,6 +29,10 @@ public class Jogador {
 
     public void setListaDeDeckesDoJogador(List<Deck> listaDeDeckesDoJogador) {
         this.listaDeDeckesDoJogador = listaDeDeckesDoJogador;
+    }
+
+    public void addDeckDoJogador(Deck deck) {
+        this.listaDeDeckesDoJogador.add(deck);
     }
 
 }

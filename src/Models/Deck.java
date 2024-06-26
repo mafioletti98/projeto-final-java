@@ -1,11 +1,12 @@
 package Models;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Deck {
 
     String nomeDoDeck;
-    List<Carta> listadecartas;
+    List<Carta> listadecartas = new ArrayList<Carta>();
 
     public Deck() {
     }

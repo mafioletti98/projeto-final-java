@@ -12,31 +12,29 @@ import Models.Deck;
 public class Sistema {
     // lista statica, pra que assim que inicializar o programa ja ter
     // uma lista ( mesmo que vazia) pra checar o login.
-    List<Jogador> jogadores = new ArrayList<Jogador>();
-    List<Deck> decks = new ArrayList<Deck>();
-    CartasDoJogo cartaDoJogo = new CartasDoJogo();
+    static List<Jogador> jogadores = new ArrayList<Jogador>();
+    static List<Deck> decks = new ArrayList<Deck>();
+    static CartasDoJogo cartaDoJogo = new CartasDoJogo();
 
-    int posicaoindiceJogadorlogado = -1;
-
-    Menu menu = new Menu();
-    Cadastro cadastro = new Cadastro();
+    static int posicaoindiceJogadorlogado = -1;
 
     // menu inicial
-    public void menuFluxo() {
+    public static void menuFluxo() {
         int op;
+        System.out.println("teste");
         cartaDoJogo.InicializarListaDeCartas();
-        System.out.println("Bem vindos ao  slay the lascado ");
+        System.out.println("Bem vindos ao slay the lascado ");
 
         do {
 
-            menu.menuLogin();
+            Menu.menuLogin();
             op = Console.lerInt();
             switch (op) {
                 case 1:
                     verificarLogin();
                     break;
                 case 2:
-                    jogadores.add(cadastro.cadastrarJogador());
+                    jogadores.add(Cadastro.cadastrarJogador());
                     break;
                 case 0:
                     sair();
@@ -45,17 +43,18 @@ public class Sistema {
                     break;
             }
 
-        } while (op == 0);
+        } while (op != 0);
     }
 
-    public void menuDeck() {
+    public static void menuDeck() {
         int op;
         do {
-            menu.menuDeck();
+            Menu.menuDeck();
             op = Console.lerInt();
             switch (op) {
                 case 1:
-                    decks.add(cadastro.cadastrarNovoDeck());
+                    jogadores.get(posicaoindiceJogadorlogado).addDeckDoJogador(Cadastro.cadastrarNovoDeck());
+                    editarDeck();
                     break;
                 case 2:
                     verDecksCadastrados();
@@ -64,7 +63,7 @@ public class Sistema {
                     verDecksIncompletos();
                     break;
                 case 4:
-                    editarDeckIncompleto();
+                    editarDeck();
                     break;
                 case 5:
                     verDecksCadastrados();
@@ -76,15 +75,15 @@ public class Sistema {
                     System.out.println("digite uma opçao valida");
                     break;
             }
-        } while (op == 0);
+        } while (op != 0);
 
     }
 
-    public void sair() {
+    public static void sair() {
         System.out.println("Ate a proxima! ");
     }
 
-    public void verificarLogin() {
+    public static void verificarLogin() {
         System.out.println("Porfavor digite o nome de usuario cadastrado: ");
         String jogadorAserBuscado = Console.lerString();
 
@@ -96,6 +95,7 @@ public class Sistema {
         }
         if (posicaoindiceJogadorlogado != -1) {
             System.out.println("logado com sucesso!");
+            menuDeck();
         } else {
             System.out.println("jogador nao cadastrado!");
             System.out.println("Porfavor cadastre um usuario!");
@@ -103,25 +103,29 @@ public class Sistema {
 
     }
 
-    public void editarDeckIncompleto() {
+    public static void editarDeck() {
 
         List<Deck> decksCadastrados = jogadores.get(posicaoindiceJogadorlogado).getListaDeDeckesDoJogador();
 
-        System.out.println("Selecionar deck incompleto para editar");
+        System.out.println("Selecionar deck para editar");
+        verDecksCadastrados();
         int numeroDoDeckIncompleto = Console.lerInt();
 
         Deck deckParaEditar = decksCadastrados.get(numeroDoDeckIncompleto - 1);
 
         int op;
         do {
-            menu.menuEditarDeckIncompleto();
+            Menu.menuEditarDeckIncompleto();
             op = Console.lerInt();
             switch (op) {
                 case 1:
-                    deckParaEditar = adicionarCartaAoDeck(deckParaEditar);
+                    adicionarCartaAoDeck(deckParaEditar);
                     break;
                 case 2:
-                    deckParaEditar = removerCartaDoDeck(deckParaEditar);
+                    removerCartaDoDeck(deckParaEditar);
+                    break;
+                case 3:
+                    visualizarCartasDoDeck(deckParaEditar);
                     break;
                 case 0:
                     break;
@@ -129,14 +133,14 @@ public class Sistema {
                     System.out.println("digite uma opçao valida");
                     break;
             }
-        } while (op == 0);
+        } while (op != 0);
 
         jogadores.get(posicaoindiceJogadorlogado).getListaDeDeckesDoJogador().set(numeroDoDeckIncompleto - 1,
                 deckParaEditar);
 
     }
 
-    public void verDecksCadastrados() {
+    public static void verDecksCadastrados() {
         Jogador jogadorLogado = jogadores.get(posicaoindiceJogadorlogado);
         List<Deck> deckDoJogador = jogadorLogado.getListaDeDeckesDoJogador();
         System.out.println("Decks Cadastrados");
@@ -146,19 +150,20 @@ public class Sistema {
         }
     }
 
-    public void verDecksIncompletos() {
+    public static void verDecksIncompletos() {
         Jogador jogadorLogado = jogadores.get(posicaoindiceJogadorlogado);
         List<Deck> deckDoJogador = jogadorLogado.getListaDeDeckesDoJogador();
         System.out.println("Decks Incompletos");
         for (int i = 0; i < deckDoJogador.size(); i++) {
-            if (deckDoJogador.get(i).getListadecartas().size() < 15) {
+            if (deckDoJogador.get(i).getListadecartas() == null
+                    || deckDoJogador.get(i).getListadecartas().size() < 15) {
                 System.out.print("Deck numero: " + (i + 1));
                 System.out.println(" " + deckDoJogador.get(i).getNomeDoDeck());
             }
         }
     }
 
-    public void verOpcoesDeCartas() {
+    public static void verOpcoesDeCartas() {
         System.out.println("Cartas que podem ser selecionadas: ");
         for (int i = 0; i < cartaDoJogo.listaDecartas.size(); i++) {
             System.out.println((i + 1) + ". " + cartaDoJogo.listaDecartas.get(i).toString());
@@ -168,31 +173,38 @@ public class Sistema {
     // esse metodo adiciona uma nova carta , seja num deck novo ou em um deck criado
     // e incompleto.
     // pego o deck coloco uma carta dentro dele setto ele e depois devolvo pro menu.
-    public Deck adicionarCartaAoDeck(Deck deck) {
+    public static Deck adicionarCartaAoDeck(Deck deck) {
 
         List<Carta> listaDeCartasDoDeck = deck.getListadecartas();
 
+        if (listaDeCartasDoDeck == null) {
+            listaDeCartasDoDeck = new ArrayList<Carta>();
+        }
+
         if (listaDeCartasDoDeck.size() < 15) {
+            verOpcoesDeCartas();
             System.out.println("Digite o numero da carta que você quer adicionar no deck: ");
             int numeroDaCarta = Console.lerInt();
 
             List<Carta> listaDeCartasDoJogo = cartaDoJogo.getCarta();
+
             listaDeCartasDoDeck.add(listaDeCartasDoJogo.get(numeroDaCarta - 1));
-            deck.setListadecartas(listaDeCartasDoJogo);
+
+            deck.setListadecartas(listaDeCartasDoDeck);
         } else {
             System.out.println("O deck esta completo!");
         }
         return deck;
     }
 
-    public void visualizarCartasDoDeck(Deck deck) {
+    public static void visualizarCartasDoDeck(Deck deck) {
         List<Carta> listaDeCartasDoDeck = deck.getListadecartas();
         for (int i = 0; i < listaDeCartasDoDeck.size(); i++) {
             System.out.println((i + 1) + ". " + listaDeCartasDoDeck.get(i).toString());
         }
     }
 
-    public Deck removerCartaDoDeck(Deck deck) {
+    public static Deck removerCartaDoDeck(Deck deck) {
 
         List<Carta> listaDeCartasDoDeck = deck.getListadecartas();
 
