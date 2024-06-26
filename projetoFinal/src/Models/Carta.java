@@ -62,9 +62,7 @@ public class Carta {
     @Override
     public String toString() {
         return "\nCarta \nNome Da Carta = " + nomeDaCarta + "\nDescrição Da carta = " + descricaoDacarta
-                + "\n Raridade = "
-                + raridade
-                + "\nCusto Demana = " + custoDemana + "\nPoder = " + poder;
+                + "\n Raridade = " + raridade + "\nCusto Demana = " + custoDemana + "\nPoder = " + poder;
     }
 
 }
