@@ -174,28 +174,36 @@ public class Sistema {
     // e incompleto.
     // pego o deck coloco uma carta dentro dele setto ele e depois devolvo pro menu.
     public static Deck adicionarCartaAoDeck(Deck deck) {
-
         List<Carta> listaDeCartasDoDeck = deck.getListadecartas();
-
+    
         if (listaDeCartasDoDeck == null) {
-            listaDeCartasDoDeck = new ArrayList<Carta>();
+            listaDeCartasDoDeck = new ArrayList<>(); 
         }
-
+    
         if (listaDeCartasDoDeck.size() < 15) {
-            verOpcoesDeCartas();
-            System.out.println("Digite o numero da carta que você quer adicionar no deck: ");
-            int numeroDaCarta = Console.lerInt();
-
-            List<Carta> listaDeCartasDoJogo = cartaDoJogo.getCarta();
-
-            listaDeCartasDoDeck.add(listaDeCartasDoJogo.get(numeroDaCarta - 1));
-
-            deck.setListadecartas(listaDeCartasDoDeck);
+            verOpcoesDeCartas(); 
+            System.out.println("Digite o número da carta que você quer adicionar no deck: ");
+    
+            try {
+                int numeroDaCarta = Console.lerInt(); 
+                List<Carta> listaDeCartasDoJogo = cartaDoJogo.getCarta(); 
+    
+                listaDeCartasDoDeck.add(listaDeCartasDoJogo.get(numeroDaCarta - 1));
+                deck.setListadecartas(listaDeCartasDoDeck); 
+                System.out.println("Carta adicionada com sucesso!");
+    
+            } catch (NumberFormatException e) { 
+                System.out.println("\nErro: Digite um número inteiro válido para a carta!");
+            } catch (IndexOutOfBoundsException e) { 
+                System.out.println("\nErro: Número da carta inválido! O deck não possui essa carta.");
+            }
         } else {
-            System.out.println("O deck esta completo!");
+            System.out.println("O deck está completo!");
         }
+    
         return deck;
     }
+    
 
     public static void visualizarCartasDoDeck(Deck deck) {
         List<Carta> listaDeCartasDoDeck = deck.getListadecartas();
