@@ -1,7 +1,12 @@
 package Sistema;
 
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import Console.Console;
 import Models.Jogador;
@@ -19,10 +24,15 @@ public class Sistema {
     static int posicaoindiceJogadorlogado = -1;
 
     // menu inicial
-    public static void menuFluxo() {
+    public static void menuFluxo(List<Jogador> listaDeJogadores) {
         int op;
-        System.out.println("teste");
         cartaDoJogo.InicializarListaDeCartas();
+
+        if (listaDeJogadores != null) {
+            // Carregando os jogadores salvos
+            jogadores = listaDeJogadores;
+        }
+
         System.out.println("Bem vindos ao slay the lascado ");
 
         do {
@@ -81,6 +91,7 @@ public class Sistema {
 
     public static void sair() {
         System.out.println("Ate a proxima! ");
+        salvarArquivo();
     }
 
     public static void verificarLogin() {
@@ -214,6 +225,62 @@ public class Sistema {
         deck.setListadecartas(listaDeCartasDoDeck);
 
         return deck;
+    }
+
+    public static void salvarArquivo() {
+
+        JSONArray arrayItem = new JSONArray();
+        for (int i = 0; i < jogadores.size(); i++) {
+            JSONArray arrayDecks = new JSONArray();
+            JSONObject objItem = new JSONObject();
+
+            try {
+                objItem.put("nome", jogadores.get(i).getNome());
+
+                for (int j = 0; j < jogadores.get(i).getListaDeDeckesDoJogador().size(); j++) {
+
+                    JSONObject objDecks = new JSONObject();
+
+                    objDecks.put("nomeDoDeck", jogadores.get(i).getListaDeDeckesDoJogador().get(j).getNomeDoDeck());
+
+                    JSONArray arrayCartas = new JSONArray();
+
+                    for (int h = 0; h < jogadores.get(i).getListaDeDeckesDoJogador().get(j).getListadecartas()
+                            .size(); h++) {
+                        JSONObject objCartas = new JSONObject();
+                        objCartas.put("nomeDaCarta",
+                                jogadores.get(i).getListaDeDeckesDoJogador().get(j).getListadecartas()
+                                        .get(h).getNomeDaCarta());
+                        objCartas.put("descricaoDacarta", jogadores.get(i).getListaDeDeckesDoJogador().get(j)
+                                .getListadecartas().get(h).getDescricaoDacarta());
+                        objCartas.put("raridade", jogadores.get(i).getListaDeDeckesDoJogador().get(j).getListadecartas()
+                                .get(h).getRaridade());
+                        objCartas.put("custoDemana", jogadores.get(i).getListaDeDeckesDoJogador().get(j)
+                                .getListadecartas().get(h).getCustoDemana());
+                        objCartas.put("poder", jogadores.get(i).getListaDeDeckesDoJogador().get(j).getListadecartas()
+                                .get(h).getPoder());
+                        arrayCartas.put(objCartas);
+                        objDecks.put("listadecartas", arrayCartas);
+                    }
+
+                    arrayDecks.put(objDecks);
+                    objItem.put("listaDeDeckesDoJogador", arrayDecks);
+
+                }
+
+                arrayItem.put(objItem);
+            } catch (JSONException e) {
+
+                e.printStackTrace();
+            }
+        }
+
+        try (FileWriter file = new FileWriter("C:\\saveJogo\\save.json")) {
+            file.write(arrayItem.toString());
+        } catch (Exception e) {
+            System.out.println(e);
+
+        }
     }
 
 }

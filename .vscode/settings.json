@@ -1,8 +1,18 @@
 {
     "java.project.sourcePaths": ["src"],
     "java.project.outputPath": "bin",
-    "java.project.referencedLibraries": [
-        "lib/**/*.jar"
-    ],
+    "java.project.referencedLibraries": {
+        "include": [
+            "lib/**/*.jar",
+            "c:\\Users\\carlos.victor\\Downloads\\java-json.jar\\java-json.jar",
+            "c:\\Users\\carlos.victor\\Downloads\\json-simple-1.1.jar\\json-simple-1.1.jar",
+            "c:\\Users\\carlos.victor\\Downloads\\jackson-annotations-2.17.1.jar",
+            "c:\\Users\\carlos.victor\\Downloads\\jackson-core-2.17.1.jar",
+            "c:\\Users\\carlos.victor\\Downloads\\jackson-databind-2.17.1.jar"
+        ],
+        "exclude": [
+            "c:\\Users\\carlos.victor\\Downloads\\jackson-core-2.2.3.jar"
+        ]
+    },
     "java.debug.settings.console": "integratedTerminal"
 }
