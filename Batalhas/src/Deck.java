@@ -8,7 +8,7 @@ public class Deck {
     public Deck() {
         this.listaCartas = new ArrayList<>();
         inicializarCartas();
-    }
+     }
 
     private void inicializarCartas() {
         Cartas cartas = new Cartas();
