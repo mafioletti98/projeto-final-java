@@ -205,15 +205,25 @@ public class Sistema {
     }
 
     public static Deck removerCartaDoDeck(Deck deck) {
-
         List<Carta> listaDeCartasDoDeck = deck.getListadecartas();
-
-        System.out.println("Digite o numero da carta que você quer remover no deck: ");
-        int numeroDaCarta = Console.lerInt();
-        listaDeCartasDoDeck.remove(numeroDaCarta - 1);
-        deck.setListadecartas(listaDeCartasDoDeck);
-
-        return deck;
+    
+        while (true) { // Loop para repetição da entrada até um número inteiro ser digitado
+            try {
+                System.out.println("Digite o número da carta que você quer remover no deck: ");
+                int numeroDaCarta = Console.lerInt();
+    
+                listaDeCartasDoDeck.remove(numeroDaCarta - 1);
+                deck.setListadecartas(listaDeCartasDoDeck);
+                System.out.println("Carta removida com sucesso!");
+                return deck; // Retorne o deck após a remoção
+    
+            } catch (NumberFormatException e) { // Captura a exceção NumberFormatException
+                System.out.println("\nErro: Digite um número inteiro válido para a carta!");
+            } catch (IndexOutOfBoundsException e) { // Captura a exceção IndexOutOfBoundsException
+                System.out.println("\nErro: Número da carta inválido! O deck não possui essa carta.");
+            }
+        }
     }
+    
 
 }
