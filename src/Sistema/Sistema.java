@@ -46,7 +46,7 @@ public class Sistema {
         } while (op != 0);
     }
 
-    public static void menuDeck() {
+    public static void menuDeck() throws Exception {
         int op;
         do {
             Menu.menuDeck();
@@ -83,7 +83,7 @@ public class Sistema {
         System.out.println("Ate a proxima! ");
     }
 
-    public static void verificarLogin() {
+    public static void verificarLogin() throws Exception {
         System.out.println("Porfavor digite o nome de usuario cadastrado: ");
         String jogadorAserBuscado = Console.lerString();
 
