@@ -25,4 +25,11 @@ public class Menu {
         System.out.println("0 - voltar para o menu anterior");
     }
 
+    public static void menuDeBatalhas() {
+        System.out.println("1 - Escolher O seu deck de batalha ");
+        System.out.println("2 - batalhar contra boot");
+        System.out.println("3 - ver estatisticas do seu deck");
+        System.out.println("0 - voltar para o menu de criação / alteração de Deck");
+    }
+
 }

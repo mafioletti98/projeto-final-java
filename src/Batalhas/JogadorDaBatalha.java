@@ -1,15 +1,15 @@
+package Batalhas;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Random;
 
-
-public class Inimigo {
+public class JogadorDaBatalha {
 
     private int vida;
     private String nome;
-    private List<Carta> cartas;
+    private List<CartaDaBatalha> cartas;
 
-    public Inimigo(int vida, String nome) {
+    public JogadorDaBatalha(int vida, String nome) {
         this.vida = vida;
         this.nome = nome;
         this.cartas = new ArrayList<>();
@@ -31,22 +31,17 @@ public class Inimigo {
         this.nome = nome;
     }
 
-    public List<Carta> getCartas() {
+    public List<CartaDaBatalha> getCartas() {
         return cartas;
     }
 
-    public void adicionarCarta(Carta carta) {
+    public void adicionarCarta(CartaDaBatalha carta) {
         cartas.add(carta);
     }
 
-    public Carta getCartaAleatoria() {
-        Random random = new Random();
-        return cartas.get(random.nextInt(cartas.size()));
-    }
-
     public void mostrarCartas() {
-        System.out.println("Cartas do Inimigo:");
-        for (Carta carta : cartas) {
+        System.out.println("Cartas do Jogador:");
+        for (CartaDaBatalha carta : cartas) {
             System.out.println("Ataque: " + carta.getAtaque() + ", Defesa: " + carta.getDefesa());
         }
     }

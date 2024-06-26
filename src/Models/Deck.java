@@ -6,7 +6,7 @@ import java.util.List;
 public class Deck {
 
     String nomeDoDeck;
-    List<Carta> listadecartas = new ArrayList<Carta>();
+    List<Carta> listadecartas = new ArrayList<>();
 
     public Deck() {
     }

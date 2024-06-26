@@ -10,7 +10,7 @@ public class CartaDeDefesa extends Carta {
 
     public CartaDeDefesa(String nomeDaCarta, String descricaoDacarta, int raridade, int custoDemana, int poder,
             int block) {
-        super(nomeDaCarta, descricaoDacarta, raridade, custoDemana, poder);
+        super(nomeDaCarta, descricaoDacarta, raridade, custoDemana, poder, 2);
 
     }
 

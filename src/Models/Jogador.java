@@ -5,7 +5,7 @@ import java.util.List;
 
 public class Jogador {
     String nome;
-    List<Deck> listaDeDeckesDoJogador = new ArrayList<Deck>();
+    List<Deck> listaDeDeckesDoJogador = new ArrayList<>();
 
     public Jogador() {
     }

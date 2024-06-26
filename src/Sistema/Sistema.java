@@ -5,6 +5,9 @@ import java.util.List;
 
 import Console.Console;
 import Models.Jogador;
+import Batalhas.CartaDaBatalha;
+import Batalhas.DeckDeBatalha;
+import Batalhas.JogadorDaBatalha;
 import Models.Carta;
 import Models.CartasDoJogo;
 import Models.Deck;
@@ -12,13 +15,15 @@ import Models.Deck;
 public class Sistema {
     // lista statica, pra que assim que inicializar o programa ja ter
     // uma lista ( mesmo que vazia) pra checar o login.
-    static List<Jogador> jogadores = new ArrayList<Jogador>();
-    static List<Deck> decks = new ArrayList<Deck>();
+    static List<Jogador> jogadores = new ArrayList<>();
+    static List<Deck> decks = new ArrayList<>();
     static CartasDoJogo cartaDoJogo = new CartasDoJogo();
-
+    // o -1 é pra caso o jogador que começa com indice 0, mas na posicao 1 , posiçao
+    // 1 menos 1 = zero. que é onde ta ojogador na lista.
     static int posicaoindiceJogadorlogado = -1;
 
-    // menu inicial
+    // menu inicial com todo o fluxo de inicializaçao, e escolha de opçao do menu de
+    // login.
     public static void menuFluxo(List<Jogador> listaDeJogadores) {
         int op;
         cartaDoJogo.InicializarListaDeCartas();
@@ -51,7 +56,8 @@ public class Sistema {
         } while (op != 0);
     }
 
-    public static void menuDeck() {
+    // menu pra escolher opçao de acoes que deseja executar envolvendo deck
+    public static void menuOpcaoDeckFluxo() {
         int op;
         do {
             Menu.menuDeck();
@@ -63,6 +69,7 @@ public class Sistema {
                     break;
                 case 2:
                     verDecksCadastrados();
+                    // deve mostrar cartasdodeke5
                     break;
                 case 3:
                     verDecksIncompletos();
@@ -71,8 +78,8 @@ public class Sistema {
                     editarDeck();
                     break;
                 case 5:
-                    // Menu de Batalha
-                    // verDecksCadastrados();
+                    // Menu de Batalha , escolha de opçoes bem como acoes pra executar a batalha
+                    separarDeckDeBatalhaEComeçarMenuBatalha();
                     break;
                 case 0:
                     break;
@@ -102,7 +109,7 @@ public class Sistema {
         }
         if (posicaoindiceJogadorlogado != -1) {
             System.out.println("logado com sucesso!");
-            menuDeck();
+            menuOpcaoDeckFluxo();
         } else {
             System.out.println("jogador nao cadastrado!");
             System.out.println("Porfavor cadastre um usuario!");
@@ -225,6 +232,41 @@ public class Sistema {
 
     public static void salvarArquivo() {
         SaveJogoLerJson.saveDoArquivoJson(jogadores);
+    }
+
+    public static void separarDeckDeBatalhaEComeçarMenuBatalha() {
+
+        System.out.println("Digite o numero do deck que você quer batalhar: ");
+        verDecksCadastrados();
+        int numeroDoDeck = Console.lerInt() - 1;
+
+        Jogador jogadorLogado = jogadores.get(posicaoindiceJogadorlogado);
+        List<Deck> deckDoJogador = jogadorLogado.getListaDeDeckesDoJogador();
+
+        if (numeroDoDeck >= 0 && numeroDoDeck < deckDoJogador.size()) {
+            List<Batalhas.CartaDaBatalha> listaCartas = new ArrayList<>();
+            for (int i = 0; i < deckDoJogador.get(numeroDoDeck).getListadecartas().size(); i++) {
+
+                int atkOuDefesa = deckDoJogador.get(numeroDoDeck).getListadecartas().get(i).getPoder();
+                int tipoDeCarta = deckDoJogador.get(numeroDoDeck).getListadecartas().get(i).getTipo();
+
+                if (tipoDeCarta == 1) {
+                    Batalhas.CartaDaBatalha novaCarta = new CartaDaBatalha(atkOuDefesa, 0);
+                    listaCartas.add(novaCarta);
+                } else if (tipoDeCarta == 2) {
+                    Batalhas.CartaDaBatalha novaCarta = new CartaDaBatalha(0, atkOuDefesa);
+                    listaCartas.add(novaCarta);
+                } else {
+                    Batalhas.CartaDaBatalha novaCarta = new CartaDaBatalha(atkOuDefesa, atkOuDefesa);
+                    listaCartas.add(novaCarta);
+                }
+            }
+
+            Batalhas.Sistema.executar(
+                    new JogadorDaBatalha(200, jogadores.get(posicaoindiceJogadorlogado).getNome()),
+                    null, listaCartas);
+        }
+
     }
 
 }

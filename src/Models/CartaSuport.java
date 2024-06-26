@@ -11,7 +11,7 @@ public class CartaSuport extends Carta {
 
     public CartaSuport(String nomeDaCarta, String descricaoDacarta, int raridade, int custoDemana, int poder,
             int tipoDeSuport) {
-        super(nomeDaCarta, descricaoDacarta, raridade, custoDemana, poder);
+        super(nomeDaCarta, descricaoDacarta, raridade, custoDemana, poder, 3);
         this.tipoDeSuport = tipoDeSuport;
     }
 

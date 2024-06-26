@@ -78,6 +78,9 @@ public class SaveJogoLerJson {
                                 objCartas.put("poder",
                                         jogadores.get(i).getListaDeDeckesDoJogador().get(j).getListadecartas()
                                                 .get(h).getPoder());
+                                objCartas.put("tipo",
+                                        jogadores.get(i).getListaDeDeckesDoJogador().get(j).getListadecartas()
+                                                .get(h).getTipo());
                                 arrayCartas.put(objCartas);
                                 objDecks.put("listadecartas", arrayCartas);
                             }

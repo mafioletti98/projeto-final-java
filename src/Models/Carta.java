@@ -7,16 +7,18 @@ public class Carta {
     protected int raridade;
     protected int custoDemana;
     protected int poder;
+    protected int tipo;
 
     public Carta() {
     }
 
-    public Carta(String nomeDaCarta, String descricaoDacarta, int raridade, int custoDemana, int poder) {
+    public Carta(String nomeDaCarta, String descricaoDacarta, int raridade, int custoDemana, int poder, int tipo) {
         this.nomeDaCarta = nomeDaCarta;
         this.descricaoDacarta = descricaoDacarta;
         this.raridade = raridade;
         this.custoDemana = custoDemana;
         this.poder = poder;
+        this.tipo = tipo;
     }
 
     public String getNomeDaCarta() {
@@ -59,10 +61,19 @@ public class Carta {
         this.poder = poder;
     }
 
+    public int getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(int tipo) {
+        this.tipo = tipo;
+    }
+
     @Override
     public String toString() {
         return "Carta [nomeDaCarta=" + nomeDaCarta + ", descricaoDacarta=" + descricaoDacarta + ", raridade=" + raridade
-                + ", custoDemana=" + custoDemana + ", poder=" + poder + "]";
+                + ", custoDemana=" + custoDemana + ", poder=" + poder + ", tipo=" + (tipo == 1 ? "ataque" : "defesa")
+                + "]";
     }
 
 }

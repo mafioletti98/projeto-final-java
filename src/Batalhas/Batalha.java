@@ -1,12 +1,14 @@
+package Batalhas;
+
 import java.util.List;
 import java.util.Random;
 
 public class Batalha {
 
-    private Jogador jogador;
+    private JogadorDaBatalha jogador;
     private Inimigo inimigo;
 
-    public Batalha(Jogador jogador, Inimigo inimigo) {
+    public Batalha(JogadorDaBatalha jogador, Inimigo inimigo) {
         this.jogador = jogador;
         this.inimigo = inimigo;
     }
@@ -16,20 +18,18 @@ public class Batalha {
         System.out.println("Jogador: " + jogador.getNome() + " vs Inimigo: " + inimigo.getNome());
 
         Random random = new Random();
-        List<Carta> cartasDoJogador = jogador.getCartas();
-        Carta cartaDoInimigo = inimigo.getCartaAleatoria();
+        List<CartaDaBatalha> cartasDoJogador = jogador.getCartas();
+        CartaDaBatalha cartaDoInimigo = inimigo.getCartaAleatoria();
 
+        CartaDaBatalha cartaDoJogador = cartasDoJogador.get(random.nextInt(cartasDoJogador.size()));
 
-        Carta cartaDoJogador = cartasDoJogador.get(random.nextInt(cartasDoJogador.size()));
+        System.out.println(
+                "Carta do Jogador - Ataque: " + cartaDoJogador.getAtaque() + ", Defesa: " + cartaDoJogador.getDefesa());
+        System.out.println(
+                "Carta do Inimigo - Ataque: " + cartaDoInimigo.getAtaque() + ", Defesa: " + cartaDoInimigo.getDefesa());
 
-
-        System.out.println("Carta do Jogador - Ataque: " + cartaDoJogador.getAtaque() + ", Defesa: " + cartaDoJogador.getDefesa());
-        System.out.println("Carta do Inimigo - Ataque: " + cartaDoInimigo.getAtaque() + ", Defesa: " + cartaDoInimigo.getDefesa());
-
-        
         int danoAoInimigo = Math.max(0, cartaDoJogador.getAtaque() - cartaDoInimigo.getDefesa());
         inimigo.receberDano(danoAoInimigo);
-
 
         if (inimigo.getVida() <= 0) {
             System.out.println("A batalha terminou! " + jogador.getNome() + " derrotou " + inimigo.getNome() + "!");
@@ -37,19 +37,16 @@ public class Batalha {
             return;
         }
 
-    
         int danoAoJogador = Math.max(0, cartaDoInimigo.getAtaque() - cartaDoJogador.getDefesa());
         jogador.receberDano(danoAoJogador);
 
-
         if (jogador.getVida() <= 0) {
             System.out.println("A batalha terminou! " + inimigo.getNome() + " derrotou " + jogador.getNome() + "!");
-            
+
             System.out.println("--- FIM DA BATALHA ---\n");
             return;
         }
 
-    
         System.out.println("Resultado da Rodada:");
         System.out.println("Jogador - Vida: " + jogador.getVida());
         System.out.println("Inimigo - Vida: " + inimigo.getVida());

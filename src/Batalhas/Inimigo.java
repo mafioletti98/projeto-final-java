@@ -1,14 +1,16 @@
+package Batalhas;
+
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
-
-public class Jogador {
+public class Inimigo {
 
     private int vida;
     private String nome;
-    private List<Carta> cartas;
+    private List<CartaDaBatalha> cartas;
 
-    public Jogador(int vida, String nome) {
+    public Inimigo(int vida, String nome) {
         this.vida = vida;
         this.nome = nome;
         this.cartas = new ArrayList<>();
@@ -30,17 +32,22 @@ public class Jogador {
         this.nome = nome;
     }
 
-    public List<Carta> getCartas() {
+    public List<CartaDaBatalha> getCartas() {
         return cartas;
     }
 
-    public void adicionarCarta(Carta carta) {
+    public void adicionarCarta(CartaDaBatalha carta) {
         cartas.add(carta);
     }
 
+    public CartaDaBatalha getCartaAleatoria() {
+        Random random = new Random();
+        return cartas.get(random.nextInt(cartas.size()));
+    }
+
     public void mostrarCartas() {
-        System.out.println("Cartas do Jogador:");
-        for (Carta carta : cartas) {
+        System.out.println("Cartas do Inimigo:");
+        for (CartaDaBatalha carta : cartas) {
             System.out.println("Ataque: " + carta.getAtaque() + ", Defesa: " + carta.getDefesa());
         }
     }
@@ -49,4 +56,3 @@ public class Jogador {
         vida -= dano;
     }
 }
-
