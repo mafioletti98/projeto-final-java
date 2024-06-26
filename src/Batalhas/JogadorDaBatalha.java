@@ -3,7 +3,9 @@ package Batalhas;
 import java.util.ArrayList;
 import java.util.List;
 
-public class JogadorDaBatalha {
+import Interface.InterfaceJogadorDaBatalha;
+
+public class JogadorDaBatalha implements InterfaceJogadorDaBatalha {
 
     private int vida;
     private String nome;

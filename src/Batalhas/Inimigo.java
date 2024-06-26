@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
-public class Inimigo {
+import Interface.Inimigointerface;
+
+public class Inimigo implements Inimigointerface {
 
     private int vida;
     private String nome;
@@ -45,6 +47,7 @@ public class Inimigo {
         return cartas.get(random.nextInt(cartas.size()));
     }
 
+    @Override
     public void mostrarCartas() {
         // System.out.println("\nCarta do Inimigo:\n");
         for (CartaDaBatalha carta : cartas) {
@@ -53,6 +56,7 @@ public class Inimigo {
         }
     }
 
+    @Override
     public void receberDano(int dano) {
         vida -= dano;
     }

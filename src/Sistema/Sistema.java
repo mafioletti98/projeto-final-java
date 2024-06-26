@@ -1,6 +1,7 @@
 package Sistema;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 
 import Console.Console;
@@ -29,8 +30,8 @@ public class Sistema {
     // menu inicial com todo o fluxo de inicializaçao, e escolha de opçao do menu de
     // login.
 
-    public static void menuFluxo(List<Jogador> listaDeJogadores) {
-        int op;
+    public static void menuFluxo(List<Jogador> listaDeJogadores) throws InputMismatchException {
+
         cartaDoJogo.InicializarListaDeCartas();
 
         if (listaDeJogadores != null) {
@@ -41,63 +42,82 @@ public class Sistema {
         }
 
         System.out.println("Bem vindos ao slay the lascado ");
+        // isso garante que a variavel ja seja inicializada antes de entrar no try catch
+        int op;
+        try {
+            do {
+                Menu.menuLogin();
 
-        do {
+                op = Console.lerInt();
 
-            Menu.menuLogin();
-            op = Console.lerInt();
-            switch (op) {
-                case 1:
-                    verificarLogin();
-                    break;
-                case 2:
-                    Jogador novoJogador = Cadastro.cadastrarJogador();
-                    jogadores.add(novoJogador);
-                    // jogadores.add(Cadastro.cadastrarJogador());
-                    break;
-                case 0:
-                    sair();
-                    break;
-                default:
-                    break;
-            }
+                switch (op) {
+                    case 1:
+                        verificarLogin();
+                        break;
+                    case 2:
+                        Jogador novoJogador = Cadastro.cadastrarJogador();
+                        jogadores.add(novoJogador);
+                        break;
+                    case 0:
+                        sair();
+                        break;
+                    default:
+                        System.out.println("Opção inválida");
+                        break;
+                }
+            } while (op != 0);
 
-        } while (op != 0);
+        } catch (Exception e) {
+            System.out.println("Erro: Entrada inválida. Digite um número válido.");
+
+        }
     }
 
     // menu pra escolher opçao de acoes que deseja executar envolvendo deck
     public static void menuOpcaoDeckFluxo() {
         int op;
-        do {
-            Menu.menuDeck();
-            op = Console.lerInt();
-            switch (op) {
-                case 1:
-                    jogadores.get(posicaoindiceJogadorlogado).addDeckDoJogador(Cadastro.cadastrarNovoDeck());
-                    editarDeck();
-                    break;
-                case 2:
-                    verDecksCadastrados();
-                    // deve mostrar cartasdodeke5
-                    break;
-                case 3:
-                    verDecksIncompletos();
-                    break;
-                case 4:
-                    editarDeck();
-                    break;
-                case 5:
-                    // Menu de Batalha , escolha de opçoes bem como acoes pra executar a batalha
-                    separarDeckDeBatalhaEComeçarMenuBatalha();
-                    break;
-                case 0:
-                    break;
+        try {
+            do {
+                Menu.menuDeck();
 
-                default:
-                    System.out.println("digite uma opçao valida");
-                    break;
-            }
-        } while (op != 0);
+                op = Console.lerInt();
+                switch (op) {
+                    case 1:
+                        jogadores.get(posicaoindiceJogadorlogado).addDeckDoJogador(Cadastro.cadastrarNovoDeck());
+                        editarDeck();
+                        break;
+                    case 2:
+                        verDecksCadastrados();
+                        // deve mostrar cartasdodeke5
+                        break;
+                    case 3:
+                        verDecksIncompletos();
+                        break;
+                    case 4:
+                        editarDeck();
+                        break;
+                    case 5:
+                        // Menu de Batalha , escolha de opçoes bem como acoes pra executar a batalha
+                        separarDeckDeBatalhaEComeçarMenuBatalha();
+                        break;
+                    case 0:
+                        break;
+                    default:
+                        System.out.println("Digite uma opção válida");
+                        break;
+                }
+
+            } while (op != 0);
+        } catch (InputMismatchException e) {
+            System.out.println("Erro: Entrada inválida. Digite um número válido.");
+
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Erro: Índice inválido. Verifique sua escolha.");
+
+        } catch (Exception e) {
+            System.out.println("Erro inesperado: " + e.getMessage());
+
+        }
 
     }
 
@@ -107,23 +127,28 @@ public class Sistema {
     }
 
     public static void verificarLogin() {
-        System.out.println("Porfavor digite o nome de usuario cadastrado: ");
-        String jogadorAserBuscado = Console.lerString();
+        try {
+            System.out.println("Por favor digite o nome de usuário cadastrado: ");
+            String jogadorAserBuscado = Console.lerString();
 
-        for (int i = 0; i < jogadores.size(); i++) {
-
-            if (jogadores.get(i).getNome().equals(jogadorAserBuscado)) {
-                posicaoindiceJogadorlogado = i;
+            for (int i = 0; i < jogadores.size(); i++) {
+                if (jogadores.get(i).getNome().equals(jogadorAserBuscado)) {
+                    posicaoindiceJogadorlogado = i;
+                }
             }
-        }
-        if (posicaoindiceJogadorlogado != -1) {
-            System.out.println("logado com sucesso!");
-            menuOpcaoDeckFluxo();
-        } else {
-            System.out.println("jogador nao cadastrado!");
-            System.out.println("Porfavor cadastre um usuario!");
-        }
 
+            if (posicaoindiceJogadorlogado != -1) {
+                System.out.println("Logado com sucesso!");
+                menuOpcaoDeckFluxo();
+            } else {
+                System.out.println("Jogador não cadastrado!");
+                System.out.println("Por favor cadastre um usuário!");
+            }
+        } catch (InputMismatchException e) {
+            System.out.println("Erro: Entrada inválida. Digite um nome de usuário válido.");
+        } catch (Exception e) {
+            System.out.println("Ocorreu um erro ao verificar login: " + e.getMessage());
+        }
     }
 
     public static void editarDeck() {
@@ -137,26 +162,31 @@ public class Sistema {
         Deck deckParaEditar = decksCadastrados.get(numeroDoDeckIncompleto - 1);
 
         int op;
-        do {
-            Menu.menuEditarDeckIncompleto();
-            op = Console.lerInt();
-            switch (op) {
-                case 1:
-                    adicionarCartaAoDeck(deckParaEditar);
-                    break;
-                case 2:
-                    removerCartaDoDeck(deckParaEditar);
-                    break;
-                case 3:
-                    visualizarCartasDoDeck(deckParaEditar);
-                    break;
-                case 0:
-                    break;
-                default:
-                    System.out.println("digite uma opçao valida");
-                    break;
-            }
-        } while (op != 0);
+        try {
+            do {
+                Menu.menuEditarDeckIncompleto();
+                op = Console.lerInt();
+                switch (op) {
+                    case 1:
+                        adicionarCartaAoDeck(deckParaEditar);
+                        break;
+                    case 2:
+                        removerCartaDoDeck(deckParaEditar);
+                        break;
+                    case 3:
+                        visualizarCartasDoDeck(deckParaEditar);
+                        break;
+                    case 0:
+                        break;
+                    default:
+                        System.out.println("digite uma opçao valida");
+                        break;
+                }
+            } while (op != 0);
+        } catch (IndexOutOfBoundsException e) {
+            System.out.println("Erro: Índice inválido. Verifique sua escolha.");
+
+        }
 
         jogadores.get(posicaoindiceJogadorlogado).getListaDeDeckesDoJogador().set(numeroDoDeckIncompleto - 1,
                 deckParaEditar);

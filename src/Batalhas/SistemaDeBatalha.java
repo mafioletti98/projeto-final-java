@@ -25,6 +25,8 @@ public class SistemaDeBatalha {
 
         DeckDeBatalha deck = new DeckDeBatalha();
         deck.setListaCartas(deckBatalha);
+        jogador.setVida(50);
+        inimigo.setVida(50);
         Jogo jogo = new Jogo(jogador, inimigo, deck);
 
         jogo.iniciarJogo();
@@ -45,6 +47,7 @@ public class SistemaDeBatalha {
         switch (op) {
             case 1:
                 iniciarJogo();
+
                 break;
             case 2:
                 mostrarNomeJogador();

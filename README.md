@@ -5,7 +5,6 @@
 O projeto esta distribuido em um sistemas de package no source
 
 - Console entrada e saida de dados
-- Interface
 - Models classes de todos objetos
 - principal onde se encontra o metodo main de execução do programa
 - Sistema contem tod fluxo de criacao de menus, listas, e consultas.
