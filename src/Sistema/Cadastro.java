@@ -6,14 +6,19 @@ import Models.Deck;
 
 public class Cadastro {
 
-    public static Jogador cadastrarJogador() {
-
+ 
+//cadastrar jogador, com exceção caso o jogador tente mandar nome vazio
+    public static Jogador cadastrarJogador() throws Exception {
         Jogador jogadortemporario = new Jogador();
-        System.out.println("Porfavor digite o nome de usuario: ");
+        System.out.println("Por favor, digite o nome de usuário: ");
         jogadortemporario.setNome(Console.lerString());
-        System.out.println("jogador cadastrado com sucesso!");
+        
+        if (jogadortemporario.getNome() == null || jogadortemporario.getNome().isEmpty()) {
+            throw new Exception("\nErro digite o nome do jogador!");
+        }
+    
+        System.out.println("Jogador cadastrado com sucesso!");
         return jogadortemporario;
-
     }
 
     public static Deck cadastrarNovoDeck() {

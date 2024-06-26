@@ -19,7 +19,7 @@ public class Sistema {
     static int posicaoindiceJogadorlogado = -1;
 
     // menu inicial
-    public static void menuFluxo() {
+    public static void menuFluxo() throws Exception {
         int op;
         System.out.println("teste");
         cartaDoJogo.InicializarListaDeCartas();
