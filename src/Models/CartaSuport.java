@@ -25,9 +25,9 @@ public class CartaSuport extends Carta {
 
     @Override
     public String toString() {
-        return "CartaSuport [nomeDaCarta=" + nomeDaCarta + ", descricaoDacarta=" + descricaoDacarta + ", raridade="
-                + raridade + ", custoDemana=" + custoDemana + ", poder=" + poder + ", tipoDeSuport=" + tipoDeSuport
-                + "]";
+        return "\nCarta Suport \nNome Da Carta = " + nomeDaCarta + "\nDescrição Da carta = " + descricaoDacarta
+                + "\nRaridade="
+                + raridade + "\nCusto Demana=" + custoDemana + "\nPoder = " + poder + "\nTipo De Suport = "
+                + tipoDeSuport;
     }
-
 }

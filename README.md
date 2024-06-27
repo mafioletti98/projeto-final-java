@@ -15,12 +15,12 @@
 
 ## instruçoes de instalacao e execução
 
-   # Nessessario pegar os arquivos na pasta lib e adcionar no JRE System Library
-   # e  inicia o programa normalmente, compila e roda, seguindo o seguinte fluxo:
+   Nessessario pegar os arquivos na pasta lib e adcionar no JRE System Library
+   e  inicia o programa normalmente, compila e roda, seguindo o seguinte fluxo:
 
 Se der tudo certo, na graça de deus e confiança no nosso codigo.
 
-# caminho feliz:
+## caminho feliz:
 
 # Menu login 
 - Cadastra o jogador
@@ -29,14 +29,13 @@ deposi de logado
 # Menu deck
 - Cadastra deck
 - Edita deck ( adiciona cartas ao deck)
-volta os dois menus e sai. pra salvar as alteraçoes.
-Seleciona opcao 
+Seleciona opcao no:
 # Menu batalhas simuladas
-- Adiona o nome do jogador 
+- exibe o nome do jogador 
 - Adciona o nome do inimigo
 - iniciar batalha
     Quando iniciado a batalha o deck escolhido vai batalhar com um deque de mesmo tamanho (n vezes) ate que um dos desafiantes
-chegue ao 0 ( zero ) de vida de jogador.
+chegue ao 0 ( zero ) de vida de jogador( ambos contem 50 de vida).
 resultado da Batalha é mostrado na tela.
     As cartas Podem ser de ataque defesa ou suport, dependendo do tipo da carta. 
 elas possuem tambem raridade( rara, comum, ou legendaria).
@@ -46,20 +45,24 @@ elas possuem tambem raridade( rara, comum, ou legendaria).
 # Menu login 
 - Cadastra o jogador
 - Seleciona login 
-deposi de logado 
+depois de logado 
 # Menu deck
 seleciona uma das opçoes:
 - Cadastra deck( pode cadastrar varios decks pra um mesmo jogador, porem um de cada vez)
-- Edita deck (mostra os decks que o jogador possui bem como a opçaode adiciona cartas ao deck selecionado, ou apagar ou vizualizar todas as cartas, depois de editar clica em voltar pra o menu anterior , e clicar em voltar de novo pro menu anterior e clicar em sair pra quando sair salvar as alteracoes)
+- Edita deck (mostra os decks que o jogador possui bem como a opçao de adicionar cartas ao deck selecionado, ou apagar ou vizualizar todas as cartas, depois de editar clica em voltar pra o menu anterior , e clicar em voltar de novo pro menu anterior e clicar em sair pra quando sair salvar as alteracoes , vc faz isso caso nao queira ir direto pra batalha, ai essa seria a forma de salavar sem ir a batalha)
 - excuir deck
 # Menu batalhas simuladas( se escolhido mostra o menu de batalhas)
 no menu d ebatalhas temos as opçoes 
 - iniciar batalha
 - Adiona o nome do jogador 
 - Adciona o nome do inimigo
- so pode iniciar o jogo quando selecionar o inimigo( digitar o nome )
+ So pode iniciar o jogo quando selecionar o inimigo( digitar o nome )
  e selecionar jogador.
- ai vai e seleciona finalmente iniciar batalha.
+ seleciona finalmente iniciar batalha.
+ e segue no mata mata ate finalizar vida de jogador.
+ terminou a batalha voce é direcionado ao menu batalhas clica em voltar ou sair 
+ voce sai do menu batalhas e volta pra o de deck ,
+ onde voce pode voltar pro menu inicial e sair. <<3>>
 
 ## Dependency Management
 

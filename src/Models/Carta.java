@@ -71,9 +71,8 @@ public class Carta {
 
     @Override
     public String toString() {
-        return "Carta [nomeDaCarta=" + nomeDaCarta + ", descricaoDacarta=" + descricaoDacarta + ", raridade=" + raridade
-                + ", custoDemana=" + custoDemana + ", poder=" + poder + ", tipo=" + (tipo == 1 ? "ataque" : "defesa")
-                + "]";
+        return "\nCarta \nNome Da Carta = " + nomeDaCarta + "\nDescrição Da carta = " + descricaoDacarta
+                + "\n Raridade = " + raridade + "\nCusto Demana = " + custoDemana + "\nPoder = " + poder;
     }
 
 }

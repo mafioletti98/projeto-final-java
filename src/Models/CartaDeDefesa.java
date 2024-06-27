@@ -24,9 +24,9 @@ public class CartaDeDefesa extends Carta {
 
     @Override
     public String toString() {
-        return "CartaDeDefesa [nomeDaCarta=" + nomeDaCarta + ", block=" + block + ", descricaoDacarta="
-                + descricaoDacarta + ", raridade=" + raridade + ", custoDemana=" + custoDemana + ", poder=" + poder
-                + "]";
+        return "\nCarta De Defesa \nNome Da Carta = " + nomeDaCarta + "\nBlock=" + block + "\nDescrição Da carta = "
+                + descricaoDacarta + "\nRaridade = " + raridade + "\nCusto Demana = " + custoDemana + "\nPoder = "
+                + poder;
     }
 
 }
