@@ -16,7 +16,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import Models.Jogador;
 
 public class SaveJogoLerJson {
-
+    // estamos carregando o arquivo
+    // ler o arquivo que ta nessa pasta src\\saveJogo\\save.json
     public static List<Jogador> carregarSaveDoArquivoJson() {
         JSONParser jsonParser = new JSONParser();
         // criando nova lista de jogadores
@@ -32,16 +33,22 @@ public class SaveJogoLerJson {
             ObjectMapper objectMapper = new ObjectMapper();
 
             // Convertendo Json para Array do OBJ Jogador
+            // tamo mapeando de onde vem o conteudo e comparando com o modelo jogador
+            // comparndo o o arquivo de texto com o arquivo do model classe jogador
             Jogador[] jogadores = objectMapper.readValue(array.get(0).toString(), Jogador[].class);
+            // eu to crinado um arvio mas era um array e eu to trabalhando com lista entao
+            // eu tenho que converter e essa linha faz a converçao.
             listaSalvaDeJogadores = Arrays.asList(jogadores);
 
         } catch (Exception e) {
             System.out.println(e);
 
         }
+        // retorno a lista convertida pra main
         return listaSalvaDeJogadores;
     }
 
+    // quando eu clico em sair do programa eu salvo usando esse methodo
     public static void saveDoArquivoJson(List<Jogador> jogadores) {
 
         JSONArray arrayItem = new JSONArray();

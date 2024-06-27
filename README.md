@@ -29,6 +29,7 @@ deposi de logado
 # Menu deck
 - Cadastra deck
 - Edita deck ( adiciona cartas ao deck)
+volta os dois menus e sai. pra salvar as alteraçoes.
 Seleciona opcao 
 # Menu batalhas simuladas
 - Adiona o nome do jogador 
@@ -49,7 +50,7 @@ deposi de logado
 # Menu deck
 seleciona uma das opçoes:
 - Cadastra deck( pode cadastrar varios decks pra um mesmo jogador, porem um de cada vez)
-- Edita deck (mostra os decks que o jogador possui bem como a opçaode adiciona cartas ao deck selecionado, ou apagar ou vizualizar todas as cartas)
+- Edita deck (mostra os decks que o jogador possui bem como a opçaode adiciona cartas ao deck selecionado, ou apagar ou vizualizar todas as cartas, depois de editar clica em voltar pra o menu anterior , e clicar em voltar de novo pro menu anterior e clicar em sair pra quando sair salvar as alteracoes)
 - excuir deck
 # Menu batalhas simuladas( se escolhido mostra o menu de batalhas)
 no menu d ebatalhas temos as opçoes 
@@ -67,3 +68,12 @@ jackson-core-2.17.1.jar
 jackson-databind-2.17.1.jar
 java-json.jar
 json-simple-1.1.jar
+
+## Nome dos Integrantes e as Branchs que desenvolveram
+-Fernanda Luiza: BatalhaCartas;
+-Fernanda Silva: masterAlternativa;
+-Victor de Luca: MasterExcecao;
+-Matheus Mafioletti: MasterRevisao (incluindo commite hash 45223f190c7ce45b5f10c77ae7b34dec2dc93bd4 ), main (dono do repo)
+
+*Obs.: Matheus foi roubado e perdeu o computador, pegou um computador de Fernanda Silva emprestado e acabou commitando com o git dela que estava cadastrado na maquina!
+Commites feitos na branch MasterRevisão foram feitos por ele.

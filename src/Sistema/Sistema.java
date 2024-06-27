@@ -29,7 +29,7 @@ public class Sistema {
 
     // menu inicial com todo o fluxo de inicializaçao, e escolha de opçao do menu de
     // login.
-
+    // lista vinda da principal List<Jogador> listaDeJogadores
     public static void menuFluxo(List<Jogador> listaDeJogadores) throws InputMismatchException {
 
         cartaDoJogo.InicializarListaDeCartas();
@@ -37,12 +37,11 @@ public class Sistema {
         if (listaDeJogadores != null) {
 
             // Carregando os jogadores salvos
-            // jogadores = listaDeJogadores;
             jogadores.addAll(listaDeJogadores);
         }
 
         System.out.println("Bem vindos ao slay the lascado ");
-        // isso garante que a variavel ja seja inicializada antes de entrar no try catch
+
         int op;
         try {
             do {

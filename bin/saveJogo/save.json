@@ -1,1 +1,171 @@
-[{"nome":"toquinho","listaDeDeckesDoJogador":[{"listadecartas":[{"tipo":2,"custoDemana":2,"raridade":2,"nomeDaCarta":"Tanke de guerra","descricaoDacarta":"carta comum do tipo defesa que protege de 20 de dano.","poder":5},{"tipo":1,"custoDemana":3,"raridade":2,"nomeDaCarta":"Ragnarok","descricaoDacarta":"Carta rara do tipo ataque que atinge o usuário com uma tempestade de raio causando 30 de dano","poder":15},{"tipo":1,"custoDemana":1,"raridade":3,"nomeDaCarta":"Tempestade","descricaoDacarta":"Carta rara do tipo ataque que atinge o usuário com uma tempestade de raio causando 24 de dano","poder":12},{"tipo":1,"custoDemana":2,"raridade":2,"nomeDaCarta":"Bomba de festin","descricaoDacarta":"Carta rara do tipo ataque que atinge o usuário com uma tempestade de raio causando 18 de dano","poder":18},{"tipo":2,"custoDemana":1,"raridade":1,"nomeDaCarta":"Escudo","descricaoDacarta":"carta comum do tipo defesa que protege de 5 de dano.","poder":5},{"tipo":2,"custoDemana":1,"raridade":1,"nomeDaCarta":"bunker","descricaoDacarta":"carta comum do tipo defesa que protege de 10 de dano.","poder":5},{"tipo":3,"custoDemana":1,"raridade":1,"nomeDaCarta":"Power-on","descricaoDacarta":"carta comum do tipo de suporte tipo 1 - ataque com dano igual a quantitade de poder.","poder":2},{"tipo":1,"custoDemana":2,"raridade":2,"nomeDaCarta":"Bomba de festin","descricaoDacarta":"Carta rara do tipo ataque que atinge o usuário com uma tempestade de raio causando 18 de dano","poder":18}],"nomeDoDeck":"cru"}]}]
+[
+    {
+        "nome": "toquinho",
+        "listaDeDeckesDoJogador": [
+            {
+                "listadecartas": [
+                    {
+                        "tipo": 2,
+                        "custoDemana": 2,
+                        "raridade": 2,
+                        "nomeDaCarta": "Tanke de guerra",
+                        "descricaoDacarta": "carta comum do tipo defesa que protege de 20 de dano.",
+                        "poder": 5
+                    },
+                    {
+                        "tipo": 1,
+                        "custoDemana": 3,
+                        "raridade": 2,
+                        "nomeDaCarta": "Ragnarok",
+                        "descricaoDacarta": "Carta rara do tipo ataque que atinge o usuário com uma tempestade de raio causando 30 de dano",
+                        "poder": 15
+                    },
+                    {
+                        "tipo": 1,
+                        "custoDemana": 1,
+                        "raridade": 3,
+                        "nomeDaCarta": "Tempestade",
+                        "descricaoDacarta": "Carta rara do tipo ataque que atinge o usuário com uma tempestade de raio causando 24 de dano",
+                        "poder": 12
+                    },
+                    {
+                        "tipo": 1,
+                        "custoDemana": 2,
+                        "raridade": 2,
+                        "nomeDaCarta": "Bomba de festin",
+                        "descricaoDacarta": "Carta rara do tipo ataque que atinge o usuário com uma tempestade de raio causando 18 de dano",
+                        "poder": 18
+                    },
+                    {
+                        "tipo": 2,
+                        "custoDemana": 1,
+                        "raridade": 1,
+                        "nomeDaCarta": "Escudo",
+                        "descricaoDacarta": "carta comum do tipo defesa que protege de 5 de dano.",
+                        "poder": 5
+                    },
+                    {
+                        "tipo": 2,
+                        "custoDemana": 1,
+                        "raridade": 1,
+                        "nomeDaCarta": "bunker",
+                        "descricaoDacarta": "carta comum do tipo defesa que protege de 10 de dano.",
+                        "poder": 5
+                    },
+                    {
+                        "tipo": 3,
+                        "custoDemana": 1,
+                        "raridade": 1,
+                        "nomeDaCarta": "Power-on",
+                        "descricaoDacarta": "carta comum do tipo de suporte tipo 1 - ataque com dano igual a quantitade de poder.",
+                        "poder": 2
+                    },
+                    {
+                        "tipo": 1,
+                        "custoDemana": 2,
+                        "raridade": 2,
+                        "nomeDaCarta": "Bomba de festin",
+                        "descricaoDacarta": "Carta rara do tipo ataque que atinge o usuário com uma tempestade de raio causando 18 de dano",
+                        "poder": 18
+                    }
+                ],
+                "nomeDoDeck": "cru"
+            }
+        ]
+    },
+    {
+        "nome": "fer",
+        "listaDeDeckesDoJogador": [
+            {
+                "listadecartas": [
+                    {
+                        "tipo": 3,
+                        "custoDemana": 1,
+                        "raridade": 2,
+                        "nomeDaCarta": "Power-off",
+                        "descricaoDacarta": "carta rara do tipo de suporte tipo 2 - Defesa igual a quantitade de poder.",
+                        "poder": 10
+                    },
+                    {
+                        "tipo": 1,
+                        "custoDemana": 3,
+                        "raridade": 2,
+                        "nomeDaCarta": "Ragnarok",
+                        "descricaoDacarta": "Carta rara do tipo ataque que atinge o usuário com uma tempestade de raio causando 15 de dano",
+                        "poder": 15
+                    },
+                    {
+                        "tipo": 1,
+                        "custoDemana": 1,
+                        "raridade": 3,
+                        "nomeDaCarta": "Tempestade",
+                        "descricaoDacarta": "Carta rara do tipo ataque que atinge o usuário com uma tempestade de raio causando 12 de dano",
+                        "poder": 12
+                    },
+                    {
+                        "tipo": 1,
+                        "custoDemana": 1,
+                        "raridade": 1,
+                        "nomeDaCarta": "Raio",
+                        "descricaoDacarta": "Carta rara do tipo ataque que atinge o usuário com um raio causando 5 de dano",
+                        "poder": 5
+                    },
+                    {
+                        "tipo": 1,
+                        "custoDemana": 1,
+                        "raridade": 3,
+                        "nomeDaCarta": "Tempestade",
+                        "descricaoDacarta": "Carta rara do tipo ataque que atinge o usuário com uma tempestade de raio causando 12 de dano",
+                        "poder": 12
+                    }
+                ],
+                "nomeDoDeck": "toba"
+            },
+            {
+                "nomeDoDeck": "der"
+            }
+        ]
+    },
+    {
+        "nome": "#",
+        "listaDeDeckesDoJogador": [
+            {
+                "listadecartas": [
+                    {
+                        "tipo": 3,
+                        "custoDemana": 1,
+                        "raridade": 2,
+                        "nomeDaCarta": "Power-off",
+                        "descricaoDacarta": "carta rara do tipo de suporte tipo 2 - Defesa igual a quantitade de poder.",
+                        "poder": 10
+                    },
+                    {
+                        "tipo": 3,
+                        "custoDemana": 1,
+                        "raridade": 2,
+                        "nomeDaCarta": "Power-off",
+                        "descricaoDacarta": "carta rara do tipo de suporte tipo 2 - Defesa igual a quantitade de poder.",
+                        "poder": 10
+                    },
+                    {
+                        "tipo": 1,
+                        "custoDemana": 1,
+                        "raridade": 1,
+                        "nomeDaCarta": "Raio",
+                        "descricaoDacarta": "Carta rara do tipo ataque que atinge o usuário com um raio causando 5 de dano",
+                        "poder": 5
+                    },
+                    {
+                        "tipo": 1,
+                        "custoDemana": 3,
+                        "raridade": 2,
+                        "nomeDaCarta": "Ragnarok",
+                        "descricaoDacarta": "Carta rara do tipo ataque que atinge o usuário com uma tempestade de raio causando 15 de dano",
+                        "poder": 15
+                    }
+                ],
+                "nomeDoDeck": "?"
+            }
+        ]
+    }
+]
