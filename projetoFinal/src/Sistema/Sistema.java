@@ -12,6 +12,7 @@ import Models.Deck;
 public class Sistema {
     // lista statica, pra que assim que inicializar o programa ja ter
     // uma lista ( mesmo que vazia) pra checar o login.
+
     static List<Jogador> jogadores = new ArrayList<Jogador>();
     static List<Deck> decks = new ArrayList<Deck>();
     static CartasDoJogo cartaDoJogo = new CartasDoJogo();
